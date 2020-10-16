@@ -89,6 +89,7 @@
 							}								
 						}
 						if(isset($_POST["delrecord"])){
+							$movieid = $_POST["movieid"];
 							// Fill in the query to delete a specific movie review given by the current user. Use $userid and $movieid to correctly identify the composite key in the movie_reviews table to delete the specific movie review.
 							$query = "";
 							$query_run = mysqli_query($con, $query);
