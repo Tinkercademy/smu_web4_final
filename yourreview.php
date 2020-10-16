@@ -70,7 +70,7 @@
 
 							if($_GET["user"] == $_SESSION["username"]){		
 								echo'<form class="inlineform" method="post" action = " ';
-								echo htmlspecialchars('/movies/yourreview.php?user='.$user.'');
+								echo htmlspecialchars('./yourreview.php?user='.$user.'');
 								echo '">';
 								echo "
 								<button name='delrecord' class='deleterec' type='submit'><i class='fas fa-trash-alt'></i></button>
@@ -79,7 +79,7 @@
 								<button class='deleterec updaterec'><i class='fas fa-edit'></i></button>";
 								echo '
 								<form class="hiddenform" method="post" action = " ';
-								echo htmlspecialchars('/movies/yourreview.php?user='.$user.'');
+								echo htmlspecialchars('./yourreview.php?user='.$user.'');
 								echo '">';
 								echo "
 								<input class='rating' type='number' name='rating' step='0.1' min='0' max='5'>
