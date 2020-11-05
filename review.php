@@ -1,4 +1,4 @@
-<!-- THERE ARE TWO QUERIES(ONE INSERT AND ONE JOIN) YOU NEED TO FILL FOR THIS FILE. THEY ARE ON LINES 62 AND 104. -->
+<!-- THERE ARE TWO QUERIES(ONE INSERT AND ONE JOIN) YOU NEED TO FILL FOR THIS FILE. THEY ARE ON LINES 62 AND 107. -->
 
 <?php
 	session_start();
@@ -65,6 +65,9 @@
 
 				if($query_run){
 					echo "<script> alert('Rating added')</script>";
+				}
+				else {
+					echo "<script> alert('You have already rated, please edit your previous review')</script>";
 				}
 			}
 		?>
