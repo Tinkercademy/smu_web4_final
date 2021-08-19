@@ -42,15 +42,15 @@
 			$row = mysqli_fetch_array($result);
 			$followerid = $row['user_id'];
 			if(isset($_POST["follow"])){
-				$followee = $_POST["followee"];
+				$following = $_POST["following"];
 				
 
-				$query = "SELECT user_id FROM userinfo WHERE username = '$followee' ";
+				$query = "SELECT user_id FROM userinfo WHERE username = '$following' ";
 				$result = mysqli_query($con, $query);
 				$row = mysqli_fetch_array($result);
-				$followeeid = $row['user_id'];
+				$followingid = $row['user_id'];
 
-				$query = "INSERT into user_relation(follower_id, followee_id) VALUES('$followerid', '$followeeid')";
+				$query = "INSERT into user_relation(follower_id, following_id) VALUES('$followerid', '$followingid')";
 				$query_run = mysqli_query($con, $query);
 				if($query_run){
 					echo "<script> alert('Friend added')</script>";
@@ -73,11 +73,11 @@
 					<div class="searchresult">
 						<?php
 							// Complete this query to join the userinfo and user_relation tables so that you can display the usernames of the friends that the current user has. Use $followerid to filter the records so that only those that are friends with the current user is returned.
-							$query = "SELECT userinfo.username, user_relation.follower_id, user_relation.followee_id
+							$query = "SELECT userinfo.username, user_relation.follower_id, user_relation.following_id
 									FROM /*continue from here*/ ";
 							$result = mysqli_query($con, $query);
 							while($row = mysqli_fetch_array($result)){
-								$followee = $row['followee_id'];
+								$following = $row['following_id'];
 								$name = $row['username'];
 								echo "<h2><a href='yourreview.php?user=$name'> $name</a>
 								";
@@ -87,13 +87,13 @@
 								echo '">';
 								echo "
 								<button name='delrecord' class='deleterec' type='submit'><i class='fas fa-user-times'></i></button></h2>
-								<input class='hiddeninput' name='followee' value='$followee' readonly>
+								<input class='hiddeninput' name='following' value='$following' readonly>
 								</form>";
 							}
 
 							if(isset($_POST["delrecord"])){
-								$followeeid = $_POST["followee"];
-								//Fill in this query to delete the selected friend that the current user is following(delete from the user_relation table). $followerid is the id of the current user and $followeeid is the id of the followee that you want to delete.	
+								$followingid = $_POST["following"];
+								//Fill in this query to delete the selected friend that the current user is following(delete from the user_relation table). $followerid is the id of the current user and $followingid is the id of the following that you want to delete.	
 								$query = "";
 								$query_run = mysqli_query($con, $query);
 								if($query_run){
@@ -133,7 +133,7 @@
 											echo "
 												<h2 class='namesearched'>$name</h2>
 												<button class='addfriend' name='follow'><i class='fas fa-plus-circle'></i></button>
-												<input class='hiddeninput' name='followee' value='$name' readonly>
+												<input class='hiddeninput' name='following' value='$name' readonly>
 											</form><br>";
 										}else{
 											echo '<h2>'.$name.'</h2>';
